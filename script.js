@@ -69,24 +69,34 @@ for (const $creature of $creatures){
 
 // target the change in the theme selection drop down
 
-$themeSelected.addEventListener('change', themeChange)
+$themeSelected.addEventListener('change', selectTheme)
 
 // function themeChange will change the theme to match the selected theme in the drop down by changing the data-theme to match the value of the option selected in theme menu
+let $themeOption 
+
+function selectTheme(){
+  $themeOption = $themeSelected.value
+  themeChange()
+}
 
 function themeChange(){
-  const $themeOption = $themeSelected.value
   $bodyTheme.setAttribute('data-theme', $themeOption)
   saveChoices()
 }
 
 //target the change in the layout selection drop down
 
-$layoutSelected.addEventListener('change', layoutChange)
+$layoutSelected.addEventListener('change', selectLayout)
 
 //function layoutChange will change the theme to match the selected layout in the drop down by changing the data-layout to match the value of the option selected in layout menu
+let $layoutOption
+
+function selectLayout(){
+   $layoutOption = $layoutSelected.value
+   layoutChange()
+}
 
 function layoutChange(){
-  const $layoutOption = $layoutSelected.value
   $collection.setAttribute('data-layout', $layoutOption)
   saveChoices()
 }
@@ -121,7 +131,7 @@ function loadChoices(){
     const $choices = JSON.parse($savedChoices)
     $themeOption = $choices.themeChoice
     $layoutOption = $choices.layoutChoice
-
+    console.log($choices)
     themeChange()
     layoutChange()
 
