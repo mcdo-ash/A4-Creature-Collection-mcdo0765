@@ -85,7 +85,6 @@ $layoutSelected.addEventListener('change', layoutChange)
 
 //function layoutChange will change the theme to match the selected layout in the drop down by changing the data-layout to match the value of the option selected in layout menu
 
-
 function layoutChange(){
   const $layoutOption = $layoutSelected.value
   $collection.setAttribute('data-layout', $layoutOption)
@@ -94,7 +93,11 @@ function layoutChange(){
 
 // 4. Save both selected preferences to Local Storage.
 
+//create storage key for saved choices to be accessed through
+
 const $storageKey = "assignment-4-preferences"
+
+//saveChoices function saves the selected theme and layout choices to localStorage
 
 function saveChoices(){
   const $choices = {themeChoice: $themeOption, layoutChoice: $layoutOption}
@@ -105,6 +108,8 @@ function saveChoices(){
     console.error(error)
   }
 }
+
+//loadChoices function loads choices from the localStorage
 
 function loadChoices(){
   try{
@@ -126,6 +131,8 @@ function loadChoices(){
   }
 }
 // 5. Check for saved data on load and restore the controls and appearance.
+
+//calling loadChoices function to load saved choices from localStorage
 
 loadChoices()
 // Add short pseudocode comments before writing each feature.
